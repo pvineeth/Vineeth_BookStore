@@ -1,0 +1,77 @@
+﻿@model BookModel
+@inject Vineeth.Repository.ILanguageRepository _languageRepository
+<form method="post" enctype="multipart/form-data">
+	<div class="form-group">
+
+		<label asp-for="Title">Title</label>
+		<input asp-for="Title" class="form-control" />
+		<span asp-validation-for="Title" class="text-danger"></span>
+		
+	</div>
+	<div class="form-group">
+
+		<label asp-for="Author">Author</label>
+		<input asp-for="Author" class="form-control" />
+		<span asp-validation-for="Author" class="text-danger"></span>
+
+	</div>
+	<div class="form-group">
+
+		<label asp-for="Description">Description</label>
+		<input asp-for="Description" class="form-control" />
+		<span asp-validation-for="Description" class="text-danger"></span>
+
+	</div>
+	<div class="form-group">
+
+		<label asp-for="Category">Category</label>
+		<input asp-for="Category" class="form-control" />
+		<span asp-validation-for="Category" class="text-danger"></span>
+
+
+	</div>
+	<div class="form-group">
+
+		<label asp-for="LanguageID">Language</label>
+		<select asp-for="LanguageID" class="form-control" asp-items="(await _languageRepository.GetAllLanguage()).Select(x=>new SelectListItem(){Text=x.Name, Value=x.ID.ToString()})">
+
+		</select>
+		<span asp-validation-for="LanguageID" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+
+		<label asp-for="Totalpages">Totalpages</label>
+		<input asp-for="Totalpages" class="form-control" />
+		<span asp-validation-for="Totalpages" class="text-danger"></span>
+
+	</div>
+	<div class="for-group">
+		<label asp-for="Coverphoto"></label><br />
+		<input asp-for="Coverphoto">
+		<span asp-validation-for="Coverphoto" class="text-danger"></span>
+
+	</div>
+	<div class="for-group">
+		<label asp-for="BookPdf"></label><br />
+		<input asp-for="BookPdf">
+		<span asp-validation-for="BookPdf" class="text-danger"></span>
+
+	</div>
+
+	<div class="for-group">
+		<label asp-for="coverimageurl"></label><br />
+		<input asp-for="coverimageurl">
+		<span asp-validation-for="coverimageurl" class="text-danger"></span>
+
+	</div>
+	<div class="for-group">
+		<label asp-for="Bookpdfurl"></label><br />
+		<input asp-for="Bookpdfurl">
+		<span asp-validation-for="Bookpdfurl" class="text-danger"></span>
+
+	</div>
+	<div class="form-group" style="padding-top:20px">
+
+		<input type="submit" value="AddBook" class="btn btn-primary" />
+	</div>
+</form>
